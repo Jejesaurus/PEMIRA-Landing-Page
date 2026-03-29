@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@source "./*.html";
+@source "./src/**/*.js";
+@layer utilities {
+  .font-bungee {
+    font-family: "Bungee", cursive;
+  }
+
+  .font-irish {
+    font-family: "Irish Grover", cursive;
+  }
+
+  .font-montserrat{
+  font-family: "Montserrat", cursive;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@source inline("anim-visible scrolled flipped");

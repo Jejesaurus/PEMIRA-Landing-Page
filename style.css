@@ -1,0 +1,334 @@
+/* =========================================
+   GLOBAL RESET — cegah horizontal overflow
+   ========================================= */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* =========================================
+   SCROLL ANIMATION BASE CLASSES
+   ========================================= */
+
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.anim-fade-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.anim-fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.anim-zoom-in {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.anim-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* State "visible" — ditambahkan JS lewat Intersection Observer */
+.anim-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Stagger delays */
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.18s; }
+.stagger-3 { transition-delay: 0.31s; }
+.stagger-4 { transition-delay: 0.44s; }
+
+
+/* =========================================
+   HERO ANIMATIONS (load, bukan scroll)
+   ========================================= */
+
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(-35px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroImageIn {
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+.hero-title {
+  animation: heroSlideRight 0.8s ease forwards;
+}
+
+.hero-subtitle {
+  opacity: 0;
+  animation: heroSlideUp 0.8s ease 0.25s forwards;
+}
+
+.hero-btn {
+  opacity: 0;
+  animation: heroSlideUp 0.8s ease 0.45s forwards;
+}
+
+.hero-image {
+  opacity: 0;
+  animation: heroImageIn 1s ease 0.3s forwards;
+}
+
+.hero-image-float {
+  animation: heroImageIn 1s ease 0.3s forwards,
+             floatBob 4s ease-in-out 1.3s infinite;
+}
+
+
+/* =========================================
+   NAVBAR GLASSMORPHISM
+   ========================================= */
+
+.navbar-glass {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar-glass.scrolled {
+  background: rgba(10, 20, 60, 0.55);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   WAVE DIVIDER
+   ========================================= */
+
+.wave-divider {
+  line-height: 0;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   CARD HOVER GLOW
+   ========================================= */
+
+.card-glow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glow:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   COUNTER BADGE PULSE
+   ========================================= */
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(251, 146, 60, 0); }
+}
+
+.badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================
+   TITLE UNDERLINE ANIMASI
+   ========================================= */
+
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 4px;
+  background: #f97316;
+  border-radius: 2px;
+  transition: transform 0.6s ease 0.3s;
+}
+
+.anim-visible .title-underline::after,
+.title-underline.anim-visible::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+
+/* =========================================
+   SCROLL PROGRESS BAR
+   ========================================= */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+
+/* =========================================
+   CARD FLIP
+   ========================================= */
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(10, 30, 90, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Tinggi card */
+.flip-card-paslon,
+.flip-card-paslon .flip-card-inner {
+  min-height: 680px;
+}
+
+.flip-card-blm,
+.flip-card-blm .flip-card-inner {
+  min-height: 480px;
+}
+
+.flip-card-back::-webkit-scrollbar {
+  width: 4px;
+}
+
+.flip-card-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.flip-card-back::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+/* Pastikan teks di sisi depan tetap terbaca */
+.flip-card-front h3,
+.flip-card-front p {
+  color: #1e3a8a;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.flip-hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.flip-nomor {
+  font-family: 'Bungee', cursive;
+  font-size: 3.5rem;
+  opacity: 0.1;
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  line-height: 1;
+  color: white;
+}
+
+/* Wrapper icon */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Ukuran gambar */
+.social-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
