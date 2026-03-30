@@ -1,519 +1,785 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEMIRA 2026</title>
+    <link rel="icon" type="image/png" href="./assets/images/logo.webp" />
+    <!-- Tailwind -->
+    <link href="./dist/output.css" rel="stylesheet" />
+    <!-- Flowbite -->
+    <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Irish+Grover&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEMIRA 2026</title>
-  <link rel="icon" type="image/png" href="./assets/images/logo.webp">
-  <!-- Tailwind -->
-  <link href="./dist/output.css" rel="stylesheet">
-  <!-- Flowbite -->
-  <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Irish+Grover&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-</head>
+  <body class="bg-white overflow-x-hidden">
+    <div id="scroll-progress"></div>
 
-<body class="bg-white overflow-x-hidden">
+    <!--Navbar-->
+    <nav id="main-navbar" class="navbar-glass fixed w-full z-20 top-0 left-0">
+      <div
+        class="max-w-screen-xl mx-auto flex items-center justify-between p-4"
+      >
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <img src="./assets/images/logo.webp" class="h-10" alt="Logo" />
+          <span class="text-white font-bold text-lg">PEMIRA</span>
+        </a>
 
-  <div id="scroll-progress"></div>
+        <!-- Menu -->
+        <div
+          class="hidden md:flex space-x-8 text-white font-medium font-montserrat"
+        >
+          <a href="#tentang" class="hover:text-orange-400 transition"
+            >Tentang</a
+          >
+          <a href="#peserta" class="hover:text-orange-400 transition"
+            >Peserta</a
+          >
+          <a href="#voting" class="hover:text-orange-400 transition"
+            >Cara Memilih</a
+          >
+          <a href="#jadwal" class="hover:text-orange-400 transition">Jadwal</a>
+        </div>
 
-  <!--Navbar-->
-  <nav id="main-navbar" class="navbar-glass fixed w-full z-20 top-0 left-0">
-    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+        <!-- Button -->
+        <div class="hidden md:block">
+          <a
+            href="https://pemira.isslab.web.id/welcome"
+            class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition"
+          >
+            Voting
+          </a>
+        </div>
 
-      <!-- Logo -->
-      <a href="#" class="flex items-center space-x-2">
-        <img src="./assets/images/logo.webp" class="h-10" alt="Logo">
-        <span class="text-white font-bold text-lg">PEMIRA</span>
-      </a>
-
-      <!-- Menu -->
-      <div class="hidden md:flex space-x-8 text-white font-medium font-montserrat">
-        <a href="#tentang" class="hover:text-orange-400 transition">Tentang</a>
-        <a href="#peserta" class="hover:text-orange-400 transition">Peserta</a>
-        <a href="#voting" class="hover:text-orange-400 transition">Cara Memilih</a>
-        <a href="#jadwal" class="hover:text-orange-400 transition">Jadwal</a>
+        <!-- Mobile Button -->
+        <button
+          data-collapse-toggle="navbar-menu"
+          type="button"
+          class="md:hidden text-white focus:outline-none"
+        >
+          ☰
+        </button>
       </div>
 
-      <!-- Button -->
-      <div class="hidden md:block">
-        <a href="https://pemira.isslab.web.id/login" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
+      <!-- Mobile Menu -->
+      <div class="hidden px-4 pb-4 bg-white/10" id="navbar-menu">
+        <a href="#tentang" class="block py-2 text-white">Tentang</a>
+        <a href="#peserta" class="block py-2 text-white">Peserta</a>
+        <a href="#voting" class="block py-2 text-white">Cara Memilih</a>
+        <a href="#jadwal" class="block py-2 text-white">Jadwal</a>
+        <a
+          href="https://pemira.isslab.web.id/welcome"
+          class="block mt-2 bg-orange-500 text-center py-2 rounded-lg text-white"
+        >
           Voting
         </a>
       </div>
+    </nav>
 
-      <!-- Mobile Button -->
-      <button data-collapse-toggle="navbar-menu" type="button" class="md:hidden text-white focus:outline-none">
-        ☰
-      </button>
+    <!--Hero -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url(&quot;./assets/images/bg.webp&quot;)"
+      ></div>
 
-    </div>
+      <div class="relative z-10 max-w-screen-xl mx-auto px-6 w-full">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="text-white text-center md:text-left">
+            <h1
+              class="hero-title font-bungee text-5xl md:text-6xl text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.7)] mb-4"
+            >
+              PEMIRA FASILKOM 2026
+            </h1>
 
-    <!-- Mobile Menu -->
-    <div class="hidden px-4 pb-4 bg-white/10" id="navbar-menu">
-      <a href="#tentang" class="block py-2 text-white">Tentang</a>
-      <a href="#peserta" class="block py-2 text-white">Peserta</a>
-      <a href="#voting" class="block py-2 text-white">Cara Memilih</a>
-      <a href="#jadwal" class="block py-2 text-white">Jadwal</a>
-      <a href="https://pemira.isslab.web.id/login" class="block mt-2 bg-orange-500 text-center py-2 rounded-lg text-white">
-        Voting
-      </a>
-    </div>
-  </nav>
+            <p
+              class="hero-subtitle text-xl text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.7)] font-irish"
+            >
+              “Diving into Digital Innovation for Democratic Justice”
+            </p>
 
-  <!--Hero -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
+            <button
+              class="hero-btn bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-lg font-semibold shadow-lg font-montserrat"
+            >
+              <a href="https://pemira.isslab.web.id/welcome">Mulai Voting</a>
+            </button>
+          </div>
 
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./assets/images/bg.webp');"></div>
-
-
-    <div class="relative z-10 max-w-screen-xl mx-auto px-6 w-full">
-
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-
-        <div class="text-white text-center md:text-left">
-          <h1
-            class="hero-title font-bungee text-5xl md:text-6xl text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.7)] mb-4">
-            PEMIRA FASILKOM 2026
-          </h1>
-
-          <p class="hero-subtitle text-xl text-white mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.7)] font-irish">
-            “Diving into Digital Innovation for Democratic Justice”
-          </p>
-
-          <button
-            class="hero-btn bg-orange-500 hover:bg-orange-600 transition px-6 py-3 rounded-lg font-semibold shadow-lg font-montserrat">
-            <a href="https://pemira.isslab.web.id/login">Mulai Voting</a>
-          </button>
-        </div>
-
-        <div class="flex justify-center">
-          <img src="./assets/images/kotak-suara.webp" alt="Kotak Suara"
-            class="hero-image-float w-[500px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+          <div class="flex justify-center">
+            <img
+              src="./assets/images/kotak-suara.webp"
+              alt="Kotak Suara"
+              class="hero-image-float w-[500px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-btn flex flex-col items-center gap-1">
-      <span class="text-white/60 text-xs font-montserrat tracking-widest uppercase">Scroll</span>
-      <svg class="w-5 h-5 text-white/60 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </section>
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-btn flex flex-col items-center gap-1"
+      >
+        <span
+          class="text-white/60 text-xs font-montserrat tracking-widest uppercase"
+          >Scroll</span
+        >
+        <svg
+          class="w-5 h-5 text-white/60 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
+    </section>
 
-  <!--Apa itu Pemira-->
-  <section class="bg-white py-40" id="tentang">
-    <div class="max-w-screen-xl mx-auto px-6 text-center">
+    <!--Apa itu Pemira-->
+    <section class="bg-white py-40" id="tentang">
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <h2
+          class="anim-fade-up text-3xl md:text-5xl text-orange-400 font-bungee mb-6 title-underline"
+        >
+          Apa itu Pemira?
+        </h2>
 
-      <h2 class="anim-fade-up text-3xl md:text-5xl text-orange-400 font-bungee mb-6 title-underline">
-        Apa itu Pemira?
-      </h2>
+        <p
+          class="anim-fade-up stagger-2 max-w-2xl mx-auto mb-12 text-blue-900 font-montserrat"
+        >
+          "PEMIRA FASILKOM 2026" merupakan kegiatan rutin tahunan berupa
+          pemilihan Calon Ketua dan Wakil Ketua BEM Fakultas Ilmu Komputer serta
+          memilih Calon Keanggotaan BLM Fakultas Ilmu Komputer. Seluruh Sivitas
+          Akademik diundang untuk mendengarkan visi misi kandidat, memahami
+          potensi para kandidat, berdiskusi tentang isu-isu kampus, dan yang
+          terpenting adalah menggunakan hak suara mereka.
+        </p>
+      </div>
+    </section>
 
-      <p class="anim-fade-up stagger-2 max-w-2xl mx-auto mb-12 text-blue-900 font-montserrat">
-        "PEMIRA FASILKOM 2026" merupakan kegiatan rutin tahunan berupa pemilihan Calon Ketua dan Wakil Ketua BEM
-        Fakultas Ilmu Komputer serta memilih Calon Keanggotaan BLM Fakultas Ilmu Komputer. Seluruh Sivitas Akademik
-        diundang untuk mendengarkan visi misi kandidat, memahami potensi para kandidat, berdiskusi tentang isu-isu
-        kampus, dan yang terpenting adalah menggunakan hak suara mereka.
-      </p>
+    <section
+      class="bg-gradient-to-b from-blue-900 to-cyan-600 py-20"
+      id="peserta"
+    >
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <h2
+          class="anim-fade-up text-3xl md:text-5xl font-bungee text-white mb-12"
+        >
+          Calon Ketua & Wakil BEM
+        </h2>
+        <p
+          class="anim-fade-up stagger-1 text-white/60 text-sm font-montserrat mb-4"
+        >
+          Klik kartu untuk melihat visi & misi
+        </p>
 
-    </div>
-  </section>
-
-  <section class="bg-gradient-to-b from-blue-900 to-cyan-600 py-20" id="peserta">
-    <div class="max-w-screen-xl mx-auto px-6 text-center">
-
-      <h2 class="anim-fade-up text-3xl md:text-5xl font-bungee text-white mb-12">
-        Calon Ketua & Wakil BEM
-      </h2>
-      <p class="anim-fade-up stagger-1 text-white/60 text-sm font-montserrat mb-4">
-        Klik kartu untuk melihat visi & misi
-      </p>
-
-      <div class="anim-zoom-in flex justify-center">
-        <!-- flip-card wrapper -->
-        <div class="flip-card w-full max-w-2xl" style="min-height: 480px;" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-
-            <!-- SISI DEPAN -->
-            <div class="flip-card-front shadow-md">
-              <div class="grid grid-cols-2 gap-6 mb-6">
-                <div class="anim-fade-left">
-                  <h3 class="font-irish md:text-4xl text-xl my-3 text-blue-900">Calon Ketua</h3>
-                  <img src="./assets/images/ketua.webp" loading="lazy" alt="Ketua"
-                    class="w-full h-56 object-cover rounded-md shadow-md">
+        <div class="anim-zoom-in flex justify-center">
+          <!-- flip-card wrapper -->
+          <div
+            class="flip-card w-full max-w-2xl"
+            style="min-height: 480px"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <!-- SISI DEPAN -->
+              <div class="flip-card-front shadow-md">
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                  <div class="anim-fade-left">
+                    <h3
+                      class="font-irish md:text-4xl text-xl my-3 text-blue-900"
+                    >
+                      Calon Ketua
+                    </h3>
+                    <img
+                      src="./assets/images/ketua.webp"
+                      loading="lazy"
+                      alt="Ketua"
+                      class="w-full h-56 object-cover rounded-md shadow-md"
+                    />
+                  </div>
+                  <div class="anim-fade-right">
+                    <h3
+                      class="font-irish md:text-4xl text-xl my-3 text-blue-900"
+                    >
+                      Calon Wakil
+                    </h3>
+                    <img
+                      src="./assets/images/wakil.webp"
+                      loading="lazy"
+                      alt="Wakil"
+                      class="w-full h-56 object-cover rounded-md shadow-md"
+                    />
+                  </div>
                 </div>
-                <div class="anim-fade-right">
-                  <h3 class="font-irish md:text-4xl text-xl my-3 text-blue-900">Calon Wakil</h3>
-                  <img src="./assets/images/wakil.webp" loading="lazy" alt="Wakil"
-                    class="w-full h-56 object-cover rounded-md shadow-md ">
+                <div class="grid grid-cols-2 text-center mb-4">
+                  <h3 class="font-irish md:text-5xl text-3xl text-blue-900">
+                    Reno Naufal Maulidyan
+                  </h3>
+                  <h3 class="font-irish md:text-5xl text-3xl text-blue-900">
+                    Dinda Aisa Selvira
+                  </h3>
                 </div>
-              </div>
-              <div class="grid grid-cols-2 text-center mb-4">
-                <h3 class="font-irish md:text-5xl text-3xl text-blue-900">Reno Naufal Maulidyan</h3>
-                <h3 class="font-irish md:text-5xl text-3xl text-blue-900">Dinda Aisa Selvira</h3>
-              </div>
-              <p class="flip-hint text-white">↩ klik untuk lihat visi & misi</p>
-            </div>
-
-            <!-- SISI BELAKANG -->
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">1</div>
-              <h3 class="font-bungee text-2xl mb-1 text-white">Reno & Dinda</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-6">Calon Ketua & Wakil BEM</p>
-
-              <div class="mb-5 text-left">
-                <h4 class="font-bungee text-lg text-orange-300 mb-2">Visi</h4>
-                <p class="font-irish text-white/90 leading-relaxed">
-                  Mewujudkan BEM Fakultas Ilmu Komputer sebagai wadah pengembangan akademik, potensi mahasiswa, dan
-                  kolaborasi dalam menghadapi dinamika perkembangan
-                  teknologi dengan berlandaskan nilai Tri
-                  Dharma Perguruan Tinggi.
+                <p class="flip-hint text-white">
+                  ↩ klik untuk lihat visi & misi
                 </p>
               </div>
 
-              <div class="text-left">
-                <h4 class="font-bungee text-lg text-orange-300 mb-2">Misi</h4>
-                <ul class="font-irish text-white/90 space-y-2">
-                  <li class="flex items-start gap-2">
-                    <span class="text-orange-400 mt-1">▸</span>
-                    Memperkuat iklim akademik
-                    mahasiswa dengan mendorong
-                    pengembangan keilmuan serta
-                    peningkatan kualitas akademik di
-                    lingkungan Fakultas Ilmu Komputer.
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-orange-400 mt-1">▸</span>
-                    Mengoptimalkan potensi mahasiswa
-                    melalui dukungan terhadap
-                    pengembangan diri, kreativitas, serta
-                    kemampuan dalam berkarya dan
-                    berkontribusi.
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-orange-400 mt-1">▸</span>
-                    Menguatkan sinergi kolaboratif
-                    dengan mahasiswa, organisasi, dan
-                    lembaga eksternal dalam mendukung
-                    pengembangan mahasiswa serta
-                    memberikan manfaat yang lebih luas.
-                  </li>
-                </ul>
+              <!-- SISI BELAKANG -->
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">1</div>
+                <h3 class="font-bungee text-2xl mb-1 text-white">
+                  Reno & Dinda
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-6">
+                  Calon Ketua & Wakil BEM
+                </p>
+
+                <div class="mb-5 text-left">
+                  <h4 class="font-bungee text-lg text-orange-300 mb-2">Visi</h4>
+                  <p class="font-irish text-white/90 leading-relaxed">
+                    Mewujudkan BEM Fakultas Ilmu Komputer sebagai wadah
+                    pengembangan akademik, potensi mahasiswa, dan kolaborasi
+                    dalam menghadapi dinamika perkembangan teknologi dengan
+                    berlandaskan nilai Tri Dharma Perguruan Tinggi.
+                  </p>
+                </div>
+
+                <div class="text-left">
+                  <h4 class="font-bungee text-lg text-orange-300 mb-2">Misi</h4>
+                  <ul class="font-irish text-white/90 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-1">▸</span>
+                      Memperkuat iklim akademik mahasiswa dengan mendorong
+                      pengembangan keilmuan serta peningkatan kualitas akademik
+                      di lingkungan Fakultas Ilmu Komputer.
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-1">▸</span>
+                      Mengoptimalkan potensi mahasiswa melalui dukungan terhadap
+                      pengembangan diri, kreativitas, serta kemampuan dalam
+                      berkarya dan berkontribusi.
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-1">▸</span>
+                      Menguatkan sinergi kolaboratif dengan mahasiswa,
+                      organisasi, dan lembaga eksternal dalam mendukung
+                      pengembangan mahasiswa serta memberikan manfaat yang lebih
+                      luas.
+                    </li>
+                  </ul>
+                </div>
+
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
               </div>
-
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
             </div>
-
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!--Card BLM-->
-  <section class="bg-gradient-to-b from-cyan-600 to-blue-900 py-20">
-    <div class="max-w-screen-xl mx-auto px-6 text-center">
+    <!--Card BLM-->
+    <section class="bg-gradient-to-b from-cyan-600 to-blue-900 py-20">
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <h2
+          class="anim-fade-up text-4xl md:text-5xl font-bungee text-white mb-4 drop-shadow-lg"
+        >
+          CALON BLM
+        </h2>
+        <p
+          class="anim-fade-up stagger-1 text-white/60 text-sm font-montserrat mb-12"
+        >
+          Klik kartu untuk melihat visi & misi
+        </p>
 
-      <h2 class="anim-fade-up text-4xl md:text-5xl font-bungee text-white mb-4 drop-shadow-lg">
-        CALON BLM
-      </h2>
-      <p class="anim-fade-up stagger-1 text-white/60 text-sm font-montserrat mb-12">
-        Klik kartu untuk melihat visi & misi
-      </p>
-
-      <!-- BARIS 1: card 1, 2, 3 -->
-      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 mb-8">
-
-        <!-- CARD BLM 1 -->
-        <div class="anim-fade-up stagger-1 flip-card flip-card-blm" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md">
-              <h3 class="font-bungee text-xl text-blue-900 mb-3">Nomor Urut 1</h3>
-              <img src="./assets/images/blm1.webp" loading="lazy" alt="Calon BLM"
-                class="w-full h-56 object-cover rounded-md mb-4">
-              <h3 class="text-2xl font-semibold text-blue-900 font-irish">Mohammad Bintang Adrian</h3>
-              <p class="flip-hint mt-2" style="color: rgba(255, 255, 255, 0.35);">↩ klik untuk visi & misi</p>
-            </div>
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">1</div>
-              <h3 class="font-bungee text-2xl text-white mb-1">Mohammad Bintang Adrian</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-5">Calon BLM No. 1</p>
-              <div class="text-left mb-4">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Visi</h4>
-                <p class="font-irish text-white/90 text-sm">Menjadikan BLM sebagai wadah yang
-                  aktif, terbuka, dan dekat dengan
-                  mahasiswa dalam menyalurkan aspirasi
-                  serta mendorong perubahan yang positif
-                  di lingkungan kampus.</p>
-              </div>
-              <div class="text-left">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Misi</h4>
-                <p class="font-irish text-white/90 text-sm">▸Mendengarkan dan menampung aspirasi mahasiswa dengan
-                  terbuka.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Menjalin komunikasi yang baik antara mahasiswa dan
-                  pihak kampus.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Berkontribusi aktif dalam kegiatan yang mendukung
-                  perkembangan mahasiswa.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Bekerja secara bertanggung jawab dan menjunjung nilai
-                  kebersamaan dalam organisasi.</p>
-              </div>
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD BLM 2 -->
-        <div class="anim-fade-up stagger-2 flip-card flip-card-blm" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md">
-              <h3 class="font-bungee text-xl text-blue-900 mb-3">Nomor Urut 2</h3>
-              <img src="./assets/images/blm2.webp" loading="lazy" alt="Calon BLM"
-                class="w-full h-56 object-cover rounded-md mb-4">
-              <h3 class="text-xl font-semibold text-blue-900 font-irish">Bobby Surya Wijaya</h3>
-              <p class="flip-hint mt-2" style="color: rgba(255, 255, 255, 0.35);">↩ klik untuk visi & misi</p>
-            </div>
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">2</div>
-              <h3 class="font-bungee text-2xl text-white mb-1">Bobby Surya Wijaya</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-5">Calon BLM No. 2</p>
-              <div class="text-left mb-4">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Visi</h4>
-                <p class="font-irish text-white/90 text-sm">Optimalisasi</p>
-              </div>
-              <div class="text-left">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Misi</h4>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Melakukan efficiency,dan perbaikan sdm</p>
-              </div>
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD BLM 3 -->
-        <div class="anim-fade-up stagger-3 flip-card flip-card-blm" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md">
-              <h3 class="font-bungee text-xl text-blue-900 mb-3">Nomor Urut 3</h3>
-              <img src="./assets/images/blm3.webp" loading="lazy" alt="Calon BLM"
-                class="w-full h-56 object-cover rounded-md mb-4">
-              <h3 class="text-xl font-semibold text-blue-900 font-irish">Ribas Satria Maulana,</h3>
-              <p class="flip-hint mt-2" style="color: rgba(255, 255, 255, 0.35);">↩ klik untuk visi & misi</p>
-            </div>
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">3</div>
-              <h3 class="font-bungee text-2xl text-white mb-1">Ribas Satria Maulana,</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-5">Calon BLM No. 3</p>
-              <div class="text-left mb-4">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Visi</h4>
-                <p class="font-irish text-white/90 text-sm">Menjadikan BLM Fasilkom sebagai lembaga legislatif mahasiswa
-                  yang aspiratif, transparan, dan aktif dalam memperjuangkan kepentingan mahasiswa Fasilkom</p>
-              </div>
-              <div class="text-left">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Misi</h4>
-                <p class="font-irish text-white/90 text-sm">▸Menampng dan menyalurkan aspirasi mahasiswa fasilkom secara
-                  terbuka</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Mengawasi kinerja lembaga kemahasiswaan agar berjalan
-                  sesuai aturan</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Menjalankan fungsi legislasi secara profesional dan
-                  bertanggung jawaban</p>
-              </div>
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- BARIS 2: card 4, 5-->
-      <div class="grid gap-8 sm:grid-cols-2 max-w-2xl mx-auto mt-6">
-
-        <!-- CARD BLM 4 -->
-        <div class="anim-fade-up stagger-1 flip-card flip-card-blm" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md">
-              <h3 class="font-bungee text-xl text-blue-900 mb-3">Nomor Urut 4</h3>
-              <img src="./assets/images/blm4.webp" loading="lazy" alt="Calon BLM"
-                class="w-full h-56 object-cover rounded-md mb-4">
-              <h3 class="text-xl font-semibold text-blue-900 font-irish">Bunga Citra Amelya</h3>
-              <p class="flip-hint mt-2" style="color: rgba(255, 255, 255, 0.35);">↩ klik untuk visi & misi</p>
-            </div>
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">4</div>
-              <h3 class="font-bungee text-2xl text-white mb-1">Bunga Citra Amelya</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-5">Calon BLM No. 4</p>
-              <div class="text-left mb-4">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Visi</h4>
-                <p class="font-irish text-white/90 text-sm">Menjadi pribadi yang terus bertumbuh,berani mengambil
-                  tanggung jawab, dan mampu memberi dampak positif bagi
-                  lingkungan sekitar melalui sikap jujur,kerja keras, dan ketekunan dalam setiap proses yang dijalani.
+        <!-- BARIS 1: card 1, 2, 3 -->
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 mb-8">
+          <!-- CARD BLM 1 -->
+          <div
+            class="anim-fade-up stagger-1 flip-card flip-card-blm"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <div class="flip-card-front shadow-md">
+                <h3 class="font-bungee text-xl text-blue-900 mb-3">
+                  Nomor Urut 1
+                </h3>
+                <img
+                  src="./assets/images/blm1.webp"
+                  loading="lazy"
+                  alt="Calon BLM"
+                  class="w-full h-56 object-cover rounded-md mb-4"
+                />
+                <h3 class="text-2xl font-semibold text-blue-900 font-irish">
+                  Mohammad Bintang Adrian
+                </h3>
+                <p
+                  class="flip-hint mt-2"
+                  style="color: rgba(255, 255, 255, 0.35)"
+                >
+                  ↩ klik untuk visi & misi
                 </p>
               </div>
-              <div class="text-left">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Misi</h4>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Menggunakan setiap pengalaman, termasuk kegagalan,
-                  sebagai kesempatan untuk berkembang.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Menjalankan setiap amanah dengan penuh tanggung jawab,
-                  kejujuran, dan komitmen yang tinggi.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Berkontribusi menciptakan organisasi yang tidak hanya
-                  aktif, tetapi juga memiliki nilai, arah, dan tujuan yang jelas.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Mendengarkan serta memahami aspirasi mahasiswa dengan
-                  sikap terbuka dan menghargai berbagai sudut pandang.</p>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Berkontribusi melalui pemikiran, ide, dan kerja nyata
-                  untuk mendukung terciptanya organisasi yang lebih baik.</p>
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">1</div>
+                <h3 class="font-bungee text-2xl text-white mb-1">
+                  Mohammad Bintang Adrian
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-5">
+                  Calon BLM No. 1
+                </p>
+                <div class="text-left mb-4">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Visi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">
+                    Menjadikan BLM sebagai wadah yang aktif, terbuka, dan dekat
+                    dengan mahasiswa dalam menyalurkan aspirasi serta mendorong
+                    perubahan yang positif di lingkungan kampus.
+                  </p>
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Misi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">
+                    ▸Mendengarkan dan menampung aspirasi mahasiswa dengan
+                    terbuka.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Menjalin komunikasi yang baik antara mahasiswa dan pihak
+                    kampus.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Berkontribusi aktif dalam kegiatan yang mendukung
+                    perkembangan mahasiswa.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Bekerja secara bertanggung jawab dan menjunjung nilai
+                    kebersamaan dalam organisasi.
+                  </p>
+                </div>
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
               </div>
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
+            </div>
+          </div>
+
+          <!-- CARD BLM 2 -->
+          <div
+            class="anim-fade-up stagger-2 flip-card flip-card-blm"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <div class="flip-card-front shadow-md">
+                <h3 class="font-bungee text-xl text-blue-900 mb-3">
+                  Nomor Urut 2
+                </h3>
+                <img
+                  src="./assets/images/blm2.webp"
+                  loading="lazy"
+                  alt="Calon BLM"
+                  class="w-full h-56 object-cover rounded-md mb-4"
+                />
+                <h3 class="text-xl font-semibold text-blue-900 font-irish">
+                  Bobby Surya Wijaya
+                </h3>
+                <p
+                  class="flip-hint mt-2"
+                  style="color: rgba(255, 255, 255, 0.35)"
+                >
+                  ↩ klik untuk visi & misi
+                </p>
+              </div>
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">2</div>
+                <h3 class="font-bungee text-2xl text-white mb-1">
+                  Bobby Surya Wijaya
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-5">
+                  Calon BLM No. 2
+                </p>
+                <div class="text-left mb-4">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Visi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">Optimalisasi</p>
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Misi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Melakukan efficiency,dan perbaikan sdm
+                  </p>
+                </div>
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD BLM 3 -->
+          <div
+            class="anim-fade-up stagger-3 flip-card flip-card-blm"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <div class="flip-card-front shadow-md">
+                <h3 class="font-bungee text-xl text-blue-900 mb-3">
+                  Nomor Urut 3
+                </h3>
+                <img
+                  src="./assets/images/blm3.webp"
+                  loading="lazy"
+                  alt="Calon BLM"
+                  class="w-full h-56 object-cover rounded-md mb-4"
+                />
+                <h3 class="text-xl font-semibold text-blue-900 font-irish">
+                  Ribas Satria Maulana,
+                </h3>
+                <p
+                  class="flip-hint mt-2"
+                  style="color: rgba(255, 255, 255, 0.35)"
+                >
+                  ↩ klik untuk visi & misi
+                </p>
+              </div>
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">3</div>
+                <h3 class="font-bungee text-2xl text-white mb-1">
+                  Ribas Satria Maulana,
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-5">
+                  Calon BLM No. 3
+                </p>
+                <div class="text-left mb-4">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Visi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">
+                    Menjadikan BLM Fasilkom sebagai lembaga legislatif mahasiswa
+                    yang aspiratif, transparan, dan aktif dalam memperjuangkan
+                    kepentingan mahasiswa Fasilkom
+                  </p>
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Misi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">
+                    ▸Menampng dan menyalurkan aspirasi mahasiswa fasilkom secara
+                    terbuka
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Mengawasi kinerja lembaga kemahasiswaan agar berjalan
+                    sesuai aturan
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Menjalankan fungsi legislasi secara profesional dan
+                    bertanggung jawaban
+                  </p>
+                </div>
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD BLM 5-->
-        <div class="anim-fade-up stagger-2 flip-card flip-card-blm" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-card-front shadow-md">
-              <h3 class="font-bungee text-xl text-blue-900 mb-3">Nomor Urut 5</h3>
-              <img src="./assets/images/blm5.webp" loading="lazy" alt="Calon BLM"
-                class="w-full h-56 object-cover rounded-md mb-4">
-              <h3 class="text-xl font-semibold text-blue-900 font-irish">Muhammad Ammar</h3>
-              <p class="flip-hint mt-2" style="color: rgba(255, 255, 255, 0.35);">↩ klik untuk visi & misi</p>
-            </div>
-            <div class="flip-card-back shadow-xl">
-              <div class="flip-nomor">5</div>
-              <h3 class="font-bungee text-2xl text-white mb-1">Muhammad Ammar</h3>
-              <p class="text-cyan-200 text-sm font-montserrat mb-5">Calon BLM No. 5</p>
-              <div class="text-left mb-4">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Visi</h4>
-                <p class="font-irish text-white/90 text-sm">Optimalisasi</p>
+        <!-- BARIS 2: card 4, 5-->
+        <div class="grid gap-8 sm:grid-cols-2 max-w-2xl mx-auto mt-6">
+          <!-- CARD BLM 4 -->
+          <div
+            class="anim-fade-up stagger-1 flip-card flip-card-blm"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <div class="flip-card-front shadow-md">
+                <h3 class="font-bungee text-xl text-blue-900 mb-3">
+                  Nomor Urut 4
+                </h3>
+                <img
+                  src="./assets/images/blm4.webp"
+                  loading="lazy"
+                  alt="Calon BLM"
+                  class="w-full h-56 object-cover rounded-md mb-4"
+                />
+                <h3 class="text-xl font-semibold text-blue-900 font-irish">
+                  Bunga Citra Amelya
+                </h3>
+                <p
+                  class="flip-hint mt-2"
+                  style="color: rgba(255, 255, 255, 0.35)"
+                >
+                  ↩ klik untuk visi & misi
+                </p>
               </div>
-              <div class="text-left">
-                <h4 class="font-bungee text-base text-orange-300 mb-1">Misi</h4>
-                <p class="font-irish text-white/90 text-sm mt-2">▸Fokus pada output dengan kualitas terbaik</p>
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">4</div>
+                <h3 class="font-bungee text-2xl text-white mb-1">
+                  Bunga Citra Amelya
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-5">
+                  Calon BLM No. 4
+                </p>
+                <div class="text-left mb-4">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Visi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">
+                    Menjadi pribadi yang terus bertumbuh,berani mengambil
+                    tanggung jawab, dan mampu memberi dampak positif bagi
+                    lingkungan sekitar melalui sikap jujur,kerja keras, dan
+                    ketekunan dalam setiap proses yang dijalani.
+                  </p>
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Misi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Menggunakan setiap pengalaman, termasuk kegagalan, sebagai
+                    kesempatan untuk berkembang.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Menjalankan setiap amanah dengan penuh tanggung jawab,
+                    kejujuran, dan komitmen yang tinggi.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Berkontribusi menciptakan organisasi yang tidak hanya
+                    aktif, tetapi juga memiliki nilai, arah, dan tujuan yang
+                    jelas.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Mendengarkan serta memahami aspirasi mahasiswa dengan sikap
+                    terbuka dan menghargai berbagai sudut pandang.
+                  </p>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Berkontribusi melalui pemikiran, ide, dan kerja nyata untuk
+                    mendukung terciptanya organisasi yang lebih baik.
+                  </p>
+                </div>
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
               </div>
-              <p class="flip-hint mt-6">↩ klik untuk kembali</p>
+            </div>
+          </div>
+
+          <!-- CARD BLM 5-->
+          <div
+            class="anim-fade-up stagger-2 flip-card flip-card-blm"
+            onclick="this.classList.toggle('flipped')"
+          >
+            <div class="flip-card-inner">
+              <div class="flip-card-front shadow-md">
+                <h3 class="font-bungee text-xl text-blue-900 mb-3">
+                  Nomor Urut 5
+                </h3>
+                <img
+                  src="./assets/images/blm5.webp"
+                  loading="lazy"
+                  alt="Calon BLM"
+                  class="w-full h-56 object-cover rounded-md mb-4"
+                />
+                <h3 class="text-xl font-semibold text-blue-900 font-irish">
+                  Muhammad Ammar
+                </h3>
+                <p
+                  class="flip-hint mt-2"
+                  style="color: rgba(255, 255, 255, 0.35)"
+                >
+                  ↩ klik untuk visi & misi
+                </p>
+              </div>
+              <div class="flip-card-back shadow-xl">
+                <div class="flip-nomor">5</div>
+                <h3 class="font-bungee text-2xl text-white mb-1">
+                  Muhammad Ammar
+                </h3>
+                <p class="text-cyan-200 text-sm font-montserrat mb-5">
+                  Calon BLM No. 5
+                </p>
+                <div class="text-left mb-4">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Visi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm">Optimalisasi</p>
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bungee text-base text-orange-300 mb-1">
+                    Misi
+                  </h4>
+                  <p class="font-irish text-white/90 text-sm mt-2">
+                    ▸Fokus pada output dengan kualitas terbaik
+                  </p>
+                </div>
+                <p class="flip-hint mt-6">↩ klik untuk kembali</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!--Tutorial Voting-->
-  <section class="bg-white py-20" id="voting">
-    <div class="max-w-screen-xl mx-auto px-6 text-center">
+    <!--Tutorial Voting-->
+    <section class="bg-white py-20" id="voting">
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <h2
+          class="anim-fade-up text-3xl md:text-5xl font-bungee text-orange-400 mb-12"
+        >
+          Tutorial Voting
+        </h2>
 
-      <h2 class="anim-fade-up text-3xl md:text-5xl font-bungee text-orange-400 mb-12">
-        Tutorial Voting
-      </h2>
+        <div class="anim-zoom-in flex justify-center">
+          <div
+            class="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-lg ring-2 ring-orange-200"
+          >
+            <!-- Thumbnail sebagai background -->
+            <img
+              src="https://img.youtube.com/vi/_Zpm7Rbca1A/maxresdefault.jpg"
+              alt="Tutorial Voting"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
 
-      <div class="anim-zoom-in flex justify-center">
-  <div class="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-lg ring-2 ring-orange-200">
-    
-    <!-- Thumbnail sebagai background -->
-    <img src="https://img.youtube.com/vi/_Zpm7Rbca1A/maxresdefault.jpg"
-         alt="Tutorial Voting"
-         class="absolute inset-0 w-full h-full object-cover">
-    
-    <!-- Overlay gelap -->
-    <div class="absolute inset-0 bg-black/90"></div>
+            <!-- Overlay gelap -->
+            <div class="absolute inset-0 bg-black/90"></div>
 
-    <!-- Tombol -->
-    <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10">
-      <a href="https://youtu.be/_Zpm7Rbca1A" target="_blank"
-         class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold font-montserrat transition inline-flex items-center gap-2 shadow-lg">
-        ▶ Tonton di YouTube
-      </a>
-    </div>
-
-  </div>
-</div>
-
-    </div>
-  </section>
-
-  <!--Jadwal-->
-  <section class="bg-[#f8fafc] py-20" id="jadwal">
-    <div class="max-w-screen-xl mx-auto px-6 text-center">
-
-      <h2 class="anim-fade-up text-3xl md:text-5xl font-bungee text-orange-400 mb-12">
-        Jadwal Pemira
-      </h2>
-
-      <!-- IMAGE — fade-up dengan delay -->
-      <div class="anim-fade-up stagger-2 flex justify-center">
-        <img src="./assets/images/timeline.webp" loading="lazy" alt="Timeline Pemira" class="w-full max-w-4xl rounded-2xl shadow-lg
-                    hover:scale-[1.02] transition duration-300">
-      </div>
-
-    </div>
-  </section>
-
-  <!--Footer -->
-  <footer class="bg-blue-900 text-white pt-16 pb-8">
-    <div class="max-w-screen-xl mx-auto px-6">
-
-      <!-- GRID -->
-      <div class="grid md:grid-cols-3 gap-10 mb-10 text-center md:text-left">
-
-        <!-- LOGO -->
-        <div class="anim-fade-left">
-          <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
-            <img src="./assets/images/logo.webp" class="h-10" alt="Logo">
-            <span class="font-bungee text-xl">PEMIRA</span>
-          </div>
-          <p class="text-gray-300 text-sm">
-            “Three things are necessary for the salvation of man: to know what he ought to believe; to know what he
-            ought to desire; and to know what he ought to do.”,<br> ― St. Thomas Aquinas
-          </p>
-        </div>
-
-        <!-- MENU — fade-up -->
-        <div class="anim-fade-up stagger-2">
-          <h3 class="font-semibold text-lg mb-4">Menu</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="#tentang" class="hover:text-white transition">Tentang</a></li>
-            <li><a href="#peserta" class="hover:text-white transition">Peserta</a></li>
-            <li><a href="#voting" class="hover:text-white transition">Tutorial</a></li>
-            <li><a href="#jadwal" class="hover:text-white transition">Jadwal</a></li>
-            <li><a href="./privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <!-- SOSMED — fade-right -->
-        <div class="anim-fade-right stagger-3">
-          <h3 class="font-semibold text-lg mb-4">Ikuti Kami</h3>
-
-          <div class="flex justify-center md:justify-start space-x-4">
-
-            <!-- IG -->
-            <a href="https://www.instagram.com/pemirafasilkom/" target="_blank" class="social-icon">
-              <img src="./assets/images/ig.webp" alt="IG">
-            </a>
-
-            <!-- YT -->
-            <a href="https://www.youtube.com/@pemirafasilkomupnvjt" target="_blank" class="social-icon">
-              <img src="./assets/images/yt.webp" alt="YT">
-            </a>
-
+            <!-- Tombol -->
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10"
+            >
+              <a
+                href="https://youtu.be/_Zpm7Rbca1A"
+                target="_blank"
+                class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold font-montserrat transition inline-flex items-center gap-2 shadow-lg"
+              >
+                ▶ Tonton di YouTube
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- GARIS -->
-      <div class="anim-fade border-t border-white/20 pt-6 text-center text-sm text-gray-400">
-  © 2026 PEMIRA FASILKOM. All rights reserved.
-  · <a href="./privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-</div>
+    <!--Jadwal-->
+    <section class="bg-[#f8fafc] py-20" id="jadwal">
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <h2
+          class="anim-fade-up text-3xl md:text-5xl font-bungee text-orange-400 mb-12"
+        >
+          Jadwal Pemira
+        </h2>
 
-    </div>
-  </footer>
-  <script src="main.js" defer></script>
-</body>
+        <!-- IMAGE — fade-up dengan delay -->
+        <div class="anim-fade-up stagger-2 flex justify-center">
+          <img
+            src="./assets/images/timeline.webp"
+            loading="lazy"
+            alt="Timeline Pemira"
+            class="w-full max-w-4xl rounded-2xl shadow-lg hover:scale-[1.02] transition duration-300"
+          />
+        </div>
+      </div>
+    </section>
 
+    <!--Footer -->
+    <footer class="bg-blue-900 text-white pt-16 pb-8">
+      <div class="max-w-screen-xl mx-auto px-6">
+        <!-- GRID -->
+        <div class="grid md:grid-cols-3 gap-10 mb-10 text-center md:text-left">
+          <!-- LOGO -->
+          <div class="anim-fade-left">
+            <div
+              class="flex items-center justify-center md:justify-start space-x-2 mb-4"
+            >
+              <img src="./assets/images/logo.webp" class="h-10" alt="Logo" />
+              <span class="font-bungee text-xl">PEMIRA</span>
+            </div>
+            <p class="text-gray-300 text-sm">
+              “Three things are necessary for the salvation of man: to know what
+              he ought to believe; to know what he ought to desire; and to know
+              what he ought to do.”,<br />
+              ― St. Thomas Aquinas
+            </p>
+          </div>
+
+          <!-- MENU — fade-up -->
+          <div class="anim-fade-up stagger-2">
+            <h3 class="font-semibold text-lg mb-4">Menu</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="#tentang" class="hover:text-white transition"
+                  >Tentang</a
+                >
+              </li>
+              <li>
+                <a href="#peserta" class="hover:text-white transition"
+                  >Peserta</a
+                >
+              </li>
+              <li>
+                <a href="#voting" class="hover:text-white transition"
+                  >Tutorial</a
+                >
+              </li>
+              <li>
+                <a href="#jadwal" class="hover:text-white transition">Jadwal</a>
+              </li>
+              <li>
+                <a
+                  href="./privacy-policy.html"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- SOSMED — fade-right -->
+          <div class="anim-fade-right stagger-3">
+            <h3 class="font-semibold text-lg mb-4">Ikuti Kami</h3>
+
+            <div class="flex justify-center md:justify-start space-x-4">
+              <!-- IG -->
+              <a
+                href="https://www.instagram.com/pemirafasilkom/"
+                target="_blank"
+                class="social-icon"
+              >
+                <img src="./assets/images/ig.webp" alt="IG" />
+              </a>
+
+              <!-- YT -->
+              <a
+                href="https://www.youtube.com/@pemirafasilkomupnvjt"
+                target="_blank"
+                class="social-icon"
+              >
+                <img src="./assets/images/yt.webp" alt="YT" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- GARIS -->
+        <div
+          class="anim-fade border-t border-white/20 pt-6 text-center text-sm text-gray-400"
+        >
+          © 2026 PEMIRA FASILKOM. All rights reserved. ·
+          <a href="./privacy-policy.html" class="hover:text-white transition"
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="main.js" defer></script>
+  </body>
 </html>
